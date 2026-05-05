@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Keri Tech — Software for the institutions that keep things running.</title>
+<meta name="description" content="Keri Tech builds operational software for Philippine government agencies and private enterprises — HRIS, ePRIME procurement, school management, command centers, POS." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg:           #0A0A0A;
+  --bg-elev:      #111111;
+  --bg-elev-2:    #161616;
+  --text:         #F4F4F4;
+  --text-2:       #A8A8A8;
+  --text-3:       #6E6E6E;
+  --border:       rgba(255,255,255,0.08);
+  --border-2:     rgba(255,255,255,0.14);
+  --accent:       #C7F284;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv01";
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mono {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- NAV ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.72);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: -0.015em;
+}
+.brand-mark {
+  width: 18px; height: 18px;
+  background: var(--text);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.brand-mark::before {
+  content: '';
+  position: absolute;
+  inset: 4px 4px 4px 8px;
+  background: var(--bg);
+  border-radius: 1px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-2);
+  font-size: 14px;
+  transition: color .2s ease;
+}
+.nav-links a:hover { color: var(--text); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--border-2);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.btn:hover { background: rgba(255,255,255,0.05); border-color: var(--text-2); }
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.btn-primary:hover { background: var(--text-2); border-color: var(--text-2); color: var(--bg); }
+.btn .arr { display: inline-block; transition: transform .25s ease; }
+.btn:hover .arr { transform: translateX(3px); }
+
+/* ---------- HERO ---------- */
+.hero {
+  padding: 120px 0 140px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-30%);
+  width: 900px;
+  height: 700px;
+  background: radial-gradient(ellipse at center, rgba(199,242,132,0.08), transparent 60%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11.5px;
+  color: var(--text-2);
+  margin-bottom: 36px;
+  background: var(--bg-elev);
+}
+.hero-eyebrow .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+.hero h1 {
+  font-size: clamp(42px, 6.6vw, 88px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  max-width: 18ch;
+  margin-bottom: 28px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--text-2);
+}
+.hero-sub {
+  font-size: clamp(16px, 1.4vw, 19px);
+  color: var(--text-2);
+  line-height: 1.55;
+  max-width: 58ch;
+  margin-bottom: 44px;
+}
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 96px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.hero-meta .label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.hero-meta .val {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.hero-meta .val .unit {
+  color: var(--text-3);
+  font-weight: 400;
+  font-size: 18px;
+  margin-left: 4px;
+}
+
+/* ---------- SECTIONS ---------- */
+.section { padding: 100px 0; border-top: 1px solid var(--border); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.section-head .label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-3);
+}
+.section-head h2 {
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+  margin-top: 14px;
+}
+.section-head h2 em {
+  font-style: normal;
+  color: var(--text-2);
+}
+
+/* ---------- PRODUCTS ---------- */
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.product {
+  background: var(--bg);
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+  transition: background .25s ease;
+  position: relative;
+}
+.product:hover { background: var(--bg-elev); }
+.product .num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--text-3);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+.product h3 {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.product p {
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+.product .tag {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.product .tag::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--text-3);
+}
+.product .tag.gov::before { background: var(--accent); }
+
+/* ---------- CLIENTS ---------- */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.client {
+  background: var(--bg);
+  padding: 32px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  transition: background .25s ease, color .25s ease;
+}
+.client:hover { background: var(--bg-elev); color: var(--text); }
+
+/* ---------- APPROACH (compact) ---------- */
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 48px;
+}
+.approach-item .num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.approach-item h4 {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.approach-item p {
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 36ch;
+}
+
+/* ---------- CTA ---------- */
+.cta {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 500px;
+  background: radial-gradient(ellipse at center, rgba(199,242,132,0.06), transparent 65%);
+  pointer-events: none;
+  filter: blur(30px);
+}
+.cta .inner { position: relative; }
+.cta h2 {
+  font-size: clamp(34px, 5.4vw, 64px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+  margin: 0 auto 24px;
+}
+.cta h2 em { font-style: normal; color: var(--text-2); }
+.cta p {
+  color: var(--text-2);
+  font-size: 17px;
+  max-width: 52ch;
+  margin: 0 auto 36px;
+  line-height: 1.55;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 0 40px;
+}
+.foot {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.foot h5 {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-3);
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.foot ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.foot a { color: var(--text-2); font-size: 14px; transition: color .2s ease; }
+.foot a:hover { color: var(--text); }
+.foot-brand p {
+  color: var(--text-2);
+  font-size: 14px;
+  margin-top: 16px;
+  max-width: 32ch;
+}
+.foot-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-3);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- ANIMATIONS ---------- */
+.fade {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.fade.in { opacity: 1; transform: translateY(0); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .nav-links { gap: 18px; }
+  .nav-links li:nth-child(1),
+  .nav-links li:nth-child(2),
+  .nav-links li:nth-child(3) { display: none; }
+
+  .hero { padding: 80px 0 100px; }
+  .hero-meta { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+
+  .products { grid-template-columns: 1fr; }
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+  .approach-grid { grid-template-columns: 1fr; }
+
+  .foot { grid-template-columns: 1fr 1fr; }
+  .foot-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 540px) {
+  .container { padding: 0 20px; }
+  .hero h1 { font-size: 44px; }
+  .clients-grid { grid-template-columns: 1fr 1fr; }
+  .foot { grid-template-columns: 1fr; gap: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container row">
+    <a href="#" class="brand">
+      <span class="brand-mark"></span>
+      <span>Keri Tech</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#contact" class="btn">Contact <span class="arr">→</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">
+      <span class="dot"></span>
+      Software studio · Manila, Philippines
+    </span>
+    <h1>Software for the institutions that <em>keep things running.</em></h1>
+    <p class="hero-sub">
+      Keri Tech builds operational systems for Philippine government agencies and private enterprises — from HR and procurement to school management, command centers, and retail.
+    </p>
+    <div class="hero-actions">
+      <a href="#products" class="btn btn-primary">View products <span class="arr">→</span></a>
+      <a href="#contact" class="btn">Get in touch</a>
+    </div>
+
+    <div class="hero-meta">
+      <div>
+        <div class="label">Active deployments</div>
+        <div class="val">47<span class="unit">sites</span></div>
+      </div>
+      <div>
+        <div class="label">Records managed</div>
+        <div class="val">2.4M<span class="unit">+</span></div>
+      </div>
+      <div>
+        <div class="label">In operation since</div>
+        <div class="val">2018</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-head fade">
+      <div>
+        <span class="label">01 — Products</span>
+        <h2>Five systems, <em>built to last.</em></h2>
+      </div>
+    </div>
+
+    <div class="products fade">
+      <article class="product">
+        <div class="num">01</div>
+        <h3>HRIS</h3>
+        <p>Human Resources Information System. Personnel records, payroll, leave, and statutory compliance for organizations of any size.</p>
+        <div class="tag gov">Government · Enterprise</div>
+      </article>
+
+      <article class="product">
+        <div class="num">02</div>
+        <h3>ePRIME</h3>
+        <p>End-to-end public procurement infrastructure with full audit trails, vendor management, and bid processing.</p>
+        <div class="tag gov">Government · LGU</div>
+      </article>
+
+      <article class="product">
+        <div class="num">03</div>
+        <h3>Palarong Pambansa Command Center</h3>
+        <p>Real-time operations platform coordinating athletes, venues, and live results across the country's largest student athletic meet.</p>
+        <div class="tag gov">Government · Live Ops</div>
+      </article>
+
+      <article class="product">
+        <div class="num">04</div>
+        <h3>School Management System</h3>
+        <p>Enrollment, academic records, attendance, grading, and a parent portal in one platform for primary and secondary schools.</p>
+        <div class="tag">Education · Private</div>
+      </article>
+
+      <article class="product">
+        <div class="num">05</div>
+        <h3>Point of Sale &amp; Inventory</h3>
+        <p>Counter-grade POS with multi-branch inventory sync, BIR-compliant receipts, and real-time sales reporting.</p>
+        <div class="tag">Private · Retail</div>
+      </article>
+
+      <article class="product" style="background: transparent;">
+        <div class="num">+</div>
+        <h3 style="color: var(--text-2)">Need something custom?</h3>
+        <p>We build bespoke systems for institutions with unique workflows. Tell us what you're up against.</p>
+        <a href="#contact" class="tag" style="color: var(--accent);">
+          <span style="background: var(--accent); width: 5px; height: 5px; border-radius: 50%; display: inline-block;"></span>
+          Start a conversation →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="section" id="clients">
+  <div class="container">
+    <div class="section-head fade">
+      <div>
+        <span class="label">02 — Clients</span>
+        <h2>Trusted by the public sector <em>and the boardroom.</em></h2>
+      </div>
+    </div>
+    <div class="clients-grid fade">
+      <div class="client">Department of Education</div>
+      <div class="client">Bureau of Internal Revenue</div>
+      <div class="client">Philippine Sports Commission</div>
+      <div class="client">DTI</div>
+      <div class="client">LGU Manila</div>
+      <div class="client">LGU Davao</div>
+      <div class="client">Province of Cavite</div>
+      <div class="client">San Beda University</div>
+      <div class="client">Ateneo de Manila</div>
+      <div class="client">SM Retail</div>
+      <div class="client">Robinsons Land</div>
+      <div class="client">Mercury Drug</div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section" id="approach">
+  <div class="container">
+    <div class="section-head fade">
+      <div>
+        <span class="label">03 — Approach</span>
+        <h2>Built for the <em>long view.</em></h2>
+      </div>
+    </div>
+    <div class="approach-grid fade">
+      <div class="approach-item">
+        <div class="num">01</div>
+        <h4>Built to outlast administrations</h4>
+        <p>Government systems run for ten, fifteen, twenty years. We engineer for that horizon — boring stacks, exhaustive docs, handover-ready code.</p>
+      </div>
+      <div class="approach-item">
+        <div class="num">02</div>
+        <h4>Compliance is the floor</h4>
+        <p>Data Privacy Act, COA, BIR, DepEd — we treat regulatory requirements as a starting point, then design for what officers actually need.</p>
+      </div>
+      <div class="approach-item">
+        <div class="num">03</div>
+        <h4>Local team, local context</h4>
+        <p>Every engineer on staff has worked inside Philippine institutions. We know what an LGU procurement cycle looks like in July.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="container inner">
+    <h2 class="fade">Have a system that <em>has to work?</em></h2>
+    <p class="fade">Tell us what you're building, who it serves, and what you're up against. We'll be honest about whether we're the right team.</p>
+    <div class="fade" style="display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+      <a href="mailto:hello@keri.tech" class="btn btn-primary">hello@keri.tech <span class="arr">→</span></a>
+      <a href="mailto:bids@keri.tech" class="btn">bids@keri.tech</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div class="foot-brand">
+        <a href="#" class="brand">
+          <span class="brand-mark"></span>
+          <span>Keri Tech</span>
+        </a>
+        <p>Operational software for institutions that depend on it. Quezon City, Philippines.</p>
+      </div>
+      <div>
+        <h5>Products</h5>
+        <ul>
+          <li><a href="#products">HRIS</a></li>
+          <li><a href="#products">ePRIME</a></li>
+          <li><a href="#products">Palarong Pambansa</a></li>
+          <li><a href="#products">School Management</a></li>
+          <li><a href="#products">POS &amp; Inventory</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:hello@keri.tech">hello@keri.tech</a></li>
+          <li><a href="mailto:bids@keri.tech">bids@keri.tech</a></li>
+          <li><a href="#">+63 2 0000 0000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Keri Tech. All rights reserved.</span>
+      <span>BIR · DTI · PhilGEPS Platinum</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
