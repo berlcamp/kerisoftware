@@ -30,24 +30,15 @@ export function CTA() {
           </p>
         </FadeIn>
 
-        <FadeIn
-          delay={200}
-          className="inline-flex flex-wrap justify-center gap-2.5"
-        >
+        <FadeIn delay={200} className="inline-flex flex-wrap justify-center">
           <a
-            href="mailto:hello@keri.tech"
+            href="mailto:scorpionkean.112688@gmail.com"
             className="group inline-flex items-center gap-2 rounded-lg border border-neutral-100 bg-neutral-100 px-3.5 py-2.5 text-[13.5px] font-medium text-neutral-950 transition-all hover:border-neutral-400 hover:bg-neutral-400"
           >
-            hello@keri.tech
+            scorpionkean.112688@gmail.com
             <span className="transition-transform group-hover:translate-x-0.5">
               →
             </span>
-          </a>
-          <a
-            href="mailto:bids@keri.tech"
-            className="inline-flex items-center gap-2 rounded-lg border border-white/[0.14] px-3.5 py-2.5 text-[13.5px] font-medium transition-all hover:border-neutral-400 hover:bg-white/[0.05]"
-          >
-            bids@keri.tech
           </a>
         </FadeIn>
       </div>

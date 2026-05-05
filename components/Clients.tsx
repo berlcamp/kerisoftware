@@ -2,17 +2,9 @@ import { FadeIn } from "./FadeIn";
 
 const clients = [
   "Department of Education",
-  "Bureau of Internal Revenue",
-  "Philippine Sports Commission",
-  "DTI",
-  "LGU Manila",
-  "LGU Davao",
-  "Province of Cavite",
-  "San Beda University",
-  "Ateneo de Manila",
-  "SM Retail",
-  "Robinsons Land",
-  "Mercury Drug",
+  "Pharmaceutical Companies",
+  "Local Government Units",
+  "Private Businesses",
 ];
 
 export function Clients() {

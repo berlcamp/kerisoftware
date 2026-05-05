@@ -16,9 +16,10 @@ const companyLinks = [
 ];
 
 const contactLinks = [
-  { href: "mailto:hello@keri.tech", label: "hello@keri.tech" },
-  { href: "mailto:bids@keri.tech", label: "bids@keri.tech" },
-  { href: "#", label: "+63 2 0000 0000" },
+  {
+    href: "mailto:scorpionkean.112688@gmail.com",
+    label: "scorpionkean.112688@gmail.com",
+  },
 ];
 
 export function Footer() {
@@ -35,8 +36,8 @@ export function Footer() {
               <span>Keri Tech</span>
             </a>
             <p className="mt-4 max-w-[32ch] text-sm text-neutral-400">
-              Operational software for institutions that depend on it. Quezon
-              City, Philippines.
+              Operational software for institutions that depend on it.
+              Philippines.
             </p>
           </div>
 

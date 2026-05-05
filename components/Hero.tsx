@@ -15,7 +15,7 @@ export function Hero() {
             className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"
             style={{ boxShadow: "0 0 8px var(--color-accent)" }}
           />
-          Software studio · Manila, Philippines
+          Software studio · Philippines
         </span>
 
         <h1 className="mb-7 max-w-[18ch] text-[42px] leading-[1.02] font-medium tracking-[-0.035em] sm:text-[clamp(42px,6.6vw,88px)]">

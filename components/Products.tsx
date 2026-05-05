@@ -42,6 +42,13 @@ const products: Product[] = [
     desc: "Counter-grade POS with multi-branch inventory sync, BIR-compliant receipts, and real-time sales reporting.",
     tag: "Private · Retail",
   },
+  {
+    num: "06",
+    name: "Procurement and Asset Management System",
+    desc: "Unified procurement workflows and asset lifecycle tracking — from requisition and purchase orders to depreciation, transfers, and disposal.",
+    tag: "Government · Enterprise",
+    gov: true,
+  },
 ];
 
 export function Products() {
@@ -57,8 +64,8 @@ export function Products() {
               01 — Products
             </span>
             <h2 className="mt-3.5 max-w-[22ch] text-[30px] leading-[1.1] font-medium tracking-[-0.02em] sm:text-[clamp(30px,3.6vw,44px)]">
-              Five systems,{" "}
-              <em className="not-italic text-neutral-400">built to last.</em>
+              Some of the systems{" "}
+              <em className="not-italic text-neutral-400">we&rsquo;ve built.</em>
             </h2>
           </div>
         </FadeIn>
@@ -89,26 +96,6 @@ export function Products() {
                 </div>
               </article>
             ))}
-
-            <article className="flex min-h-[240px] flex-col bg-neutral-950 px-7 pt-8 pb-7">
-              <div className="mb-6 font-mono text-[11px] tracking-[0.05em] text-neutral-500">
-                +
-              </div>
-              <h3 className="mb-2.5 text-[19px] leading-[1.25] font-medium tracking-[-0.015em] text-neutral-400">
-                Need something custom?
-              </h3>
-              <p className="flex-grow text-sm leading-[1.55] text-neutral-400">
-                We build bespoke systems for institutions with unique workflows.
-                Tell us what you&rsquo;re up against.
-              </p>
-              <a
-                href="#contact"
-                className="mt-6 flex items-center gap-1.5 font-mono text-[10.5px] tracking-[0.08em] text-[var(--color-accent)] uppercase"
-              >
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                Start a conversation →
-              </a>
-            </article>
           </div>
         </FadeIn>
       </div>
